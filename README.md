@@ -28,3 +28,44 @@ Developed a Splunk dashboard to monitor Windows login activities using Windows S
 ### Successful Logins
 ```spl
 EventCode=4624
+Additional Security Use Case: Brute Force Detection
+
+The dashboard was enhanced to detect potential brute force attacks by monitoring excessive failed login attempts in Windows Security Event Logs.
+
+Brute Force Detection Query
+
+EventCode=4625
+| stats count by Account_Name
+| where count > 5
+
+This query identifies accounts that have more than 5 failed login attempts and flags them as potential brute force attack targets.
+
+Brute Force Trend Query
+
+EventCode=4625
+| timechart count
+
+This visualization helps track failed login activity over time and identify spikes that may indicate password guessing attacks.
+
+Security Features Implemented
+
+- Successful Login Monitoring (Event ID 4624)
+- Failed Login Monitoring (Event ID 4625)
+- User Login Activity Analysis
+- Login Trend Visualization
+- Top Logged-in Users Analysis
+- Potential Brute Force Attack Detection
+- Brute Force Trend Monitoring
+- Security Alert Configuration
+
+Skills Demonstrated
+
+- Splunk Enterprise
+- Windows Event Log Analysis
+- SPL Query Development
+- Security Monitoring
+- Dashboard Development
+- Alert Creation
+- Authentication Monitoring
+- Basic Threat Detection
+- SOC Analyst Fundamentals
